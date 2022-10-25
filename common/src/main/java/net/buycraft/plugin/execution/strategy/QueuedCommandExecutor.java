@@ -1,6 +1,7 @@
 package net.buycraft.plugin.execution.strategy;
 
 import net.buycraft.plugin.IBuycraftPlatform;
+import net.buycraft.plugin.event.AbstractBuycraftDeliverPlayerCommandEvent;
 import net.buycraft.plugin.platform.NoBlocking;
 
 import java.math.BigDecimal;
@@ -68,6 +69,7 @@ public class QueuedCommandExecutor implements CommandExecutor, Runnable {
 
             if (command.canExecute(platform)) {
                 String finalCommand = platform.getPlaceholderManager().doReplace(command.getPlayer(), command.getCommand());
+                platform.fireEvent(new AbstractBuycraftDeliverPlayerCommandEvent(finalCommand, command));
                 platform.log(Level.INFO, String.format("Dispatching command '%s' for player '%s'.", finalCommand, command.getPlayer().getName()));
                 try {
                     platform.dispatchCommand(finalCommand);

@@ -5,6 +5,7 @@ import net.buycraft.plugin.IBuycraftPlatform;
 import net.buycraft.plugin.UuidUtil;
 import net.buycraft.plugin.data.QueuedPlayer;
 import net.buycraft.plugin.data.responses.ServerInformation;
+import net.buycraft.plugin.event.AbstractEvent;
 import net.buycraft.plugin.execution.placeholder.PlaceholderManager;
 import net.buycraft.plugin.execution.strategy.CommandExecutor;
 import net.buycraft.plugin.platform.PlatformInformation;
@@ -106,4 +107,9 @@ public class SpongeBuycraftPlatform implements IBuycraftPlatform {
     public ServerInformation getServerInformation() {
         return plugin.getServerInformation();
     }
+
+    @Override
+    public void fireEvent(AbstractEvent event){
+    }
+
 }

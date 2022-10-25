@@ -88,7 +88,7 @@ public class ReportBuilder {
         // Try fetching test URLs
         tryGet("Buycraft plugin API", "https://plugin.buycraft.net", writer);
         tryGet("Google over HTTPS", "https://encrypted.google.com", writer);
-        tryGet("Google over HTTP", "http://www.google.com", writer);
+        tryGet("Google over HTTP", "https://www.google.com", writer);
         return out.toString();
     }
 

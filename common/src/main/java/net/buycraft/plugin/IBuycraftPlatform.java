@@ -2,6 +2,7 @@ package net.buycraft.plugin;
 
 import net.buycraft.plugin.data.QueuedPlayer;
 import net.buycraft.plugin.data.responses.ServerInformation;
+import net.buycraft.plugin.event.AbstractEvent;
 import net.buycraft.plugin.execution.placeholder.PlaceholderManager;
 import net.buycraft.plugin.execution.strategy.CommandExecutor;
 import net.buycraft.plugin.platform.PlatformInformation;
@@ -128,4 +129,7 @@ public interface IBuycraftPlatform {
      * @return the server information
      */
     ServerInformation getServerInformation();
+
+    void fireEvent(AbstractEvent event);
+
 }
