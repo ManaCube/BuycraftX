@@ -120,7 +120,7 @@ public abstract class BuycraftPluginBase extends JavaPlugin {
         }
 
         // Check for latest version.
-        if (configuration.isCheckForUpdates()) {
+       /* if (configuration.isCheckForUpdates()) {
             VersionCheck check = new VersionCheck(this, getDescription().getVersion(), configuration.getServerKey());
             try {
                 check.verify();
@@ -128,7 +128,7 @@ public abstract class BuycraftPluginBase extends JavaPlugin {
                 getLogger().log(Level.SEVERE, "Can't check for updates", e);
             }
             getServer().getPluginManager().registerEvents(check, this); // out!
-        }
+        }*/
 
         if (configuration.isPushCommandsEnabled()) {
             injector = new NettyInjector() {
