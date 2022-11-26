@@ -255,7 +255,7 @@ public abstract class BuycraftPluginBase extends JavaPlugin {
                 try {
                     AnalyticsSend.postServerInformation(httpClient, serverKey, platform, getServer().getOnlineMode());
                 } catch (IOException e) {
-                    getLogger().log(Level.WARNING, "Can't send analytics", e);
+                    getLogger().log(Level.WARNING, "Can't send analytics: " + e.getMessage());
                 }
             }, 0, 20 * TimeUnit.DAYS.toSeconds(1));
         }

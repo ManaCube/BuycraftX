@@ -32,7 +32,7 @@ public class PostCompletedCommandsTask implements Runnable {
             try {
                 platform.getApiClient().deleteCommands(commandsToPost).execute();
             } catch (IOException e) {
-                platform.log(Level.SEVERE, "Unable to mark commands as completed", e);
+                platform.log(Level.SEVERE, "Unable to mark commands as completed: " + e.getMessage());
                 // TODO: Retry?
             }
         }
@@ -53,7 +53,7 @@ public class PostCompletedCommandsTask implements Runnable {
                 try {
                     platform.getApiClient().deleteCommands(list).execute();
                 } catch (IOException e) {
-                    platform.log(Level.SEVERE, "Unable to mark commands as completed", e);
+                    platform.log(Level.SEVERE, "Unable to mark commands as completed: " + e.getMessage());
                     break;
                 }
             }

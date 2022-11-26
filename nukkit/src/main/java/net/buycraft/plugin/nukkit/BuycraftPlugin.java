@@ -129,7 +129,7 @@ public class BuycraftPlugin extends PluginBase {
                 try {
                     AnalyticsSend.postServerInformation(httpClient, serverKey, platform, false);
                 } catch (IOException e) {
-                    getLogger().warning("Can't send analytics", e);
+                    getLogger().warning("Can't send analytics: " + e.getMessage());
                 }
             }, 0, 20 * 60 * 60 * 24);
         }

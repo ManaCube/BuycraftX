@@ -41,7 +41,7 @@ public class RecentPurchaseSignUpdateFetcher implements Runnable {
         try {
             payments = plugin.getApiClient().getRecentPayments(Math.min(100, max)).execute().body();
         } catch (IOException e) {
-            plugin.getLogger().log(Level.SEVERE, "Could not fetch recent purchases", e);
+            plugin.getLogger().log(Level.SEVERE, "Could not fetch recent purchases: " + e.getMessage());
             return;
         }
 

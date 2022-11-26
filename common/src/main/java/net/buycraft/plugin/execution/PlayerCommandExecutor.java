@@ -25,7 +25,7 @@ public class PlayerCommandExecutor implements Runnable {
             information = platform.getApiClient().getPlayerQueue(player.getId()).execute().body();
         } catch (IOException e) {
             // TODO: Implement retry logic.
-            platform.log(Level.SEVERE, "Could not fetch command queue for player", e);
+            platform.log(Level.SEVERE, "Could not fetch command queue for player: " + e.getMessage());
             return;
         }
         platform.log(Level.INFO, String.format("Fetched %d commands for player '%s'.", information.getCommands().size(), player.getName()));

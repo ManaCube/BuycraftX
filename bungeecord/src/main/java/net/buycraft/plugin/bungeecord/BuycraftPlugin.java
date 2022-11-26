@@ -155,7 +155,7 @@ public class BuycraftPlugin extends Plugin {
                 try {
                     AnalyticsSend.postServerInformation(httpClient, serverKey, platform, getProxy().getConfig().isOnlineMode());
                 } catch (IOException e) {
-                    getLogger().log(Level.WARNING, "Can't send analytics", e);
+                    getLogger().log(Level.WARNING, "Can't send analytics: " + e.getMessage());
                 }
             }, 0, 1, TimeUnit.DAYS);
         }

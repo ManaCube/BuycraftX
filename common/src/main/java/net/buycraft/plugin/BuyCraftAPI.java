@@ -8,6 +8,7 @@ import net.buycraft.plugin.data.RecentPayment;
 import net.buycraft.plugin.data.ServerEvent;
 import net.buycraft.plugin.data.responses.*;
 import okhttp3.*;
+import org.jetbrains.annotations.NotNull;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -40,7 +41,7 @@ public interface BuyCraftAPI {
                 .client(clientBuilder
                         .addInterceptor(new Interceptor() {
                             @Override
-                            public Response intercept(Chain chain) throws IOException {
+                            public @NotNull Response intercept(@NotNull Chain chain) throws IOException {
                                 Request original = chain.request();
 
                                 Request request = original.newBuilder()
@@ -55,7 +56,7 @@ public interface BuyCraftAPI {
                         })
                         .addInterceptor(new Interceptor() {
                             @Override
-                            public Response intercept(Chain chain) throws IOException {
+                            public @NotNull Response intercept(@NotNull Chain chain) throws IOException {
                                 Response response = chain.proceed(chain.request());
                                 if (!response.isSuccessful()) {
                                     ResponseBody body = response.body();
