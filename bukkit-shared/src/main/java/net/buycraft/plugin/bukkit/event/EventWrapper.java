@@ -13,7 +13,7 @@ public class EventWrapper
 
 	public static Event wrapEvent(BukkitBuycraftPlatformBase base, AbstractEvent event) {
 		if (event instanceof AbstractBuycraftDeliverPlayerCommandEvent) {
-			return new BuycraftDeliverPlayerCommandEvent(base, (AbstractBuycraftDeliverPlayerCommandEvent) event);
+			return new BuycraftDeliverPlayerCommandEvent((AbstractBuycraftDeliverPlayerCommandEvent) event);
 		}
 		return null;
 	}
