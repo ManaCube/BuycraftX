@@ -17,12 +17,14 @@ public abstract class NettyInjector {
 
     private static final String NMS_VERSION;
     private static final String NMS_PACKAGE;
+    private static final Integer NMS_VERSION_INT;
 
     static {
         String packageName = Bukkit.getServer().getClass().getPackage().getName();
         NMS_VERSION = packageName.substring(packageName.lastIndexOf(".") + 1);
+        NMS_VERSION_INT = getNmsVersion();
 
-        if (getNmsVersion() != null && getNmsVersion() >= 17) {
+        if (NMS_VERSION_INT != null && NMS_VERSION_INT >= 17) {
             NMS_PACKAGE = "net.minecraft.server.";
         } else {
             NMS_PACKAGE = "net.minecraft.server." + NMS_VERSION + ".";
@@ -61,7 +63,7 @@ public abstract class NettyInjector {
             throw new IllegalStateException("Cannot inject twice.");
         try {
             Class fuzzyServer = Class.forName(NMS_PACKAGE + "MinecraftServer");
-            Method serverConnectionMethod = fuzzyServer.getDeclaredMethod("getServerConnection");
+            Method serverConnectionMethod = fuzzyServer.getDeclaredMethod(NMS_VERSION_INT != null && NMS_VERSION_INT >= 18 ? "ad" : "getServerConnection");
             serverConnectionMethod.setAccessible(true);
 
             // Get the server connection
